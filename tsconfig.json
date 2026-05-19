@@ -1,0 +1,32 @@
+{
+  "extends": "./.quasar/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "strict": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "src/*": ["src/*"]
+    },
+    "types": [ "node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.test.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  //"exclude": ["node_modules"]
+
+
+  "exclude": [
+    "./dist",
+    "./.quasar",
+    "./node_modules",
+    "./src-capacitor",
+    "./src-cordova",
+    "./quasar.config.*.temporary.compiled*"
+  ]
+    
+}

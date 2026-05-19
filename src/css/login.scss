@@ -1,0 +1,150 @@
+@import 'quasar.variables.scss';
+
+.page_padding {
+  padding-left: 10rem;
+  @media screen and (max-width: 900px) {
+    padding-left: 0;
+  }
+}
+
+.blur{
+  filter: blur();
+}
+
+.fixed-position {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
+.custom_center{
+  @media screen and (max-width: 900px) {
+    justify-content: center;
+  }
+}
+
+.login__cards {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  min-width: min-content;
+  @media screen and (max-width: 900px) {
+    width: 70vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+  }
+  @media screen and (max-width: 360px) {
+    box-shadow: none;
+  }
+}
+
+.image_background{
+  background-image: url('images/desfoque_login.png');
+  background-size: 'cover';
+  background-position: 'center';
+  backdrop-filter: blur(10px); /* Aplica o blur apenas no fundo */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+.custom_logo {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin-bottom: 2rem;
+  min-width: min-content;
+  @media screen and (max-width: 900px) {
+    width: 15rem;
+  }
+  @media screen and (max-width: 768px) {
+    width: 15rem;
+  }
+  @media screen and (max-width: 360px) {
+    width: 12rem;
+  }
+}
+
+.login__card {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 2rem;
+  height: 100%;
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+}
+
+.custom_z{
+  z-index: 10;
+}
+
+.login__card-back {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  padding: 3rem;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.login__logo{
+  width: 200px;
+  height: 200px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.agro_text{
+  color: white;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.bg-page {
+  background-color: $login-bg;
+}
+.corner-image {
+  width: 80vw;
+  height: 100vh;
+  @media screen and (max-width: 900px) {
+    width: 70vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+  }
+  @media screen and (max-width: 360px) {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+  }
+}
+
+.custom-blur {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5); /* Background semitransparente */
+  backdrop-filter: blur(10px); /* Aplica o blur apenas no fundo */
+  -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+}
+
+.custom-transparent-bg {
+  position: relative;
+  background: rgba(248, 247, 247, 0.5); /* Aplica transparência no fundo (50% opaco) */
+  /* Você pode ajustar a cor e a opacidade conforme necessário */
+}
+
+
+
+

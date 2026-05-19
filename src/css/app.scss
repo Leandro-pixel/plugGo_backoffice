@@ -1,0 +1,148 @@
+// app global css in SCSS form
+// app global css in SCSS form
+@import 'quasar.variables.scss';
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../fonts/ilroy-regular.ttf') format('opentype'); //aqui errei de propósito para manter a font nativa
+}
+
+* {
+  font-family: 'Gilroy', sans-serif;
+  scrollbar-width: thin;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+input:-webkit-autofill {
+  -webkit-background-clip: text !important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+.big-border-radius {
+  border-radius: 25px;
+}
+
+.default-box-shadow {
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glow-box-shadow {
+  box-shadow: 0 0 10px 0 $secondary;
+}
+
+.animation {
+  transition: all 0.5s;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.half-height {
+  height: 50%;
+}
+
+.logo__img{
+  width:80%;
+  height: auto
+}
+
+.right {
+  justify-content: right;
+  text-align: right;
+}
+
+.left {
+  justify-content: left;
+  text-align: left;
+}
+
+.main__div {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  height: 100%;
+  width: 100%;
+}
+
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  min-width: 40%;
+}
+
+.no-wrap {
+  white-space: wrap;
+}
+
+.scale-on-hover {
+  transition: all 0.3s ease;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  }
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.with-gradient {
+  background: linear-gradient(to top, $primary, transparent);
+  opacity: 0.8;
+}
+
+.flex-direction-setter {
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+
+.separators{
+  width: 80%;
+  background-color: white;
+  height: 0.1rem
+}
+
+.hoverable {
+  transition: color 0.3s; /* Efeito suave na mudança */
+}
+
+.hoverable:hover {
+  cursor: pointer;
+  color: $accent !important; /* Troque pela cor desejada */
+}
+
+.isActive{
+    color: $primary;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-top: solid 3px $primary;
+    background-color: rgba(0, 0, 0, 0.2); // Preto com 10% de opacidade
+    cursor: pointer;
+  }
+
+
+.isNotActive{
+  color: $primary;
+  border-top: solid 1px $primary;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
