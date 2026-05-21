@@ -86,7 +86,7 @@ onMounted(async () => {
   });
 
   try {
-    const response = await api.requestGet('/host/list-all-spots');
+    const response = await api.requestGet('/host/list-spots');
 
     const data = Array.isArray(response) ? response : response.data;
 

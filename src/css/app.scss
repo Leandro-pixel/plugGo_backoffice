@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('../fonts/ilroy-regular.ttf') format('opentype'); //aqui errei de propósito para manter a font nativa
+  src: url('/fonts/Gilroy-Regular.ttf') format('opentype');
 }
 
 * {
@@ -52,9 +52,9 @@ input:-webkit-autofill {
   height: 50%;
 }
 
-.logo__img{
-  width:80%;
-  height: auto
+.logo__img {
+  width: 80%;
+  height: auto;
 }
 
 .right {
@@ -114,10 +114,10 @@ input:-webkit-autofill {
   }
 }
 
-.separators{
+.separators {
   width: 80%;
   background-color: white;
-  height: 0.1rem
+  height: 0.1rem;
 }
 
 .hoverable {
@@ -129,17 +129,16 @@ input:-webkit-autofill {
   color: $accent !important; /* Troque pela cor desejada */
 }
 
-.isActive{
-    color: $primary;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    border-top: solid 3px $primary;
-    background-color: rgba(0, 0, 0, 0.2); // Preto com 10% de opacidade
-    cursor: pointer;
-  }
+.isActive {
+  color: $primary;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-top: solid 3px $primary;
+  background-color: rgba(0, 0, 0, 0.2); // Preto com 10% de opacidade
+  cursor: pointer;
+}
 
-
-.isNotActive{
+.isNotActive {
   color: $primary;
   border-top: solid 1px $primary;
   padding-left: 0.5rem;

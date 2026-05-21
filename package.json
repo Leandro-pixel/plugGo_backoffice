@@ -1,11 +1,11 @@
 {
-  "name": "agrosafe-front",
+  "name": "pluggo_backoffice",
   "version": "0.0.1",
   "description": "A Quasar Project",
   "productName": "PlugGo",
   "author": "leandro soares <leandro20002004@hotmail.com>",
   "private": true,
-  "homepage": "https://leandro-pixel.github.io/agrosafe-front/",
+  "homepage": "https://leandro-pixel.github.io/plugGo_backoffice/",
   "scripts": {
     "predeploy": "quasar build",
     "deploy": "gh-pages -d dist/spa",
@@ -16,10 +16,10 @@
     "build": "quasar build"
   },
   "dependencies": {
-    "@quasar/app-vite": "^2.0.2",
+    "@quasar/app-vite": "^2.6.0",
     "@quasar/cli": "^2.5.0",
     "@quasar/extras": "^1.16.4",
-    "apexcharts": "^4.5.0",
+    "apexcharts": "^5.12.0",
     "axios": "^1.7.7",
     "chart.js": "^4.5.1",
     "cpf-cnpj-validator": "^1.0.3",
@@ -47,7 +47,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "gh-pages": "^6.3.0",
     "prettier": "^2.5.1",
-    "typescript": "~5.5.4",
+    "typescript": "^5.9.3",
     "vite-plugin-checker": "^0.8.0",
     "vue-tsc": "^2.0.29"
   },

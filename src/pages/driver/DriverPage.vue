@@ -1,16 +1,14 @@
 <template>
   <q-layout>
     <q-page class="q-pa-md">
-
       <!-- HEADER -->
       <div class="row items-center justify-between q-mb-md">
-        <div class="text-h6">Hosts</div>
+        <div class="text-h6">Drivers</div>
       </div>
 
       <!-- FILTROS -->
       <q-card class="q-mb-md">
         <q-card-section class="row q-col-gutter-md">
-
           <div class="col-12 col-md-4">
             <q-input
               v-model="filters.name"
@@ -42,49 +40,41 @@
           </div>
 
           <div class="col-12">
-            <q-btn
-              color="primary"
-              label="Buscar"
-              @click="reloadTable"
-            />
+            <q-btn color="primary" label="Buscar" @click="reloadTable" />
           </div>
-
         </q-card-section>
       </q-card>
 
       <!-- TABELA -->
       <q-card>
         <q-table
-          title="Hosts"
-          :rows="hosts"
+          title="Drivers"
+          :rows="drivers"
           :columns="columns"
           row-key="id"
           :loading="loading"
           :pagination="pagination"
           @request="onRequest"
         >
-
           <!-- AÇÕES -->
           <template v-slot:body-cell-actions="props">
             <q-td align="right">
-              <q-btn icon="edit" flat @click="editHost(props.row)" />
+              <q-btn icon="edit" flat @click="editDriver(props.row)" />
 
               <q-btn
                 icon="delete"
                 flat
                 color="negative"
-                @click="deleteHost(props.row.id)"
+                @click="deleteDriver(props.row.id)"
               />
             </q-td>
           </template>
-
         </q-table>
       </q-card>
 
       <!-- MODAL -->
       <q-dialog v-model="dialog">
         <q-card style="min-width: 400px">
-
           <q-card-section>
             <div class="text-h6">Editar Usuário</div>
           </q-card-section>
@@ -97,12 +87,10 @@
 
           <q-card-actions align="right">
             <q-btn flat label="Cancelar" v-close-popup />
-            <q-btn color="primary" label="Salvar" @click="saveHost" />
+            <q-btn color="primary" label="Salvar" @click="saveDriver" />
           </q-card-actions>
-
         </q-card>
       </q-dialog>
-
     </q-page>
   </q-layout>
 </template>
@@ -112,7 +100,7 @@ import { ref, onMounted } from 'vue';
 import api from 'src/lib/api';
 import type { QTableProps } from 'quasar';
 
-interface Host {
+interface Driver {
   id: number;
   name: string;
   email?: string;
@@ -120,13 +108,13 @@ interface Host {
   createdAt: string;
 }
 
-const hosts = ref<Host[]>([]);
+const drivers = ref<Driver[]>([]);
 const loading = ref(false);
 
 const dialog = ref(false);
-const editingHost = ref<Host | null>(null);
+const editingDriver = ref<Driver | null>(null);
 
-const form = ref<Partial<Host>>({});
+const form = ref<Partial<Driver>>({});
 
 const filters = ref({
   name: '',
@@ -157,9 +145,8 @@ async function onRequest(props: any) {
   loading.value = true;
 
   try {
-
     const response = await api.requestGet('/support/list-user', {
-      type: 'host',
+      type: 'driver',
 
       page,
       limit: rowsPerPage,
@@ -169,12 +156,11 @@ async function onRequest(props: any) {
       phone: filters.value.phone,
     });
 
-    hosts.value = response.data;
+    drivers.value = response.data;
 
     pagination.value.rowsNumber = response.totalItems;
     pagination.value.page = page;
     pagination.value.rowsPerPage = rowsPerPage;
-
   } catch (e) {
     console.error(e);
   } finally {
@@ -190,14 +176,14 @@ function reloadTable() {
 
 // ===== EDIT =====
 
-function editHost(host: Host) {
-  editingHost.value = host;
-  form.value = { ...host };
+function editDriver(driver: Driver) {
+  editingDriver.value = driver;
+  form.value = { ...driver };
   dialog.value = true;
 }
 
-async function saveHost() {
-  await api.requestPut('/support/update-host', form.value);
+async function saveDriver() {
+  await api.requestPut('/support/update-driver', form.value);
 
   dialog.value = false;
 
@@ -206,8 +192,8 @@ async function saveHost() {
 
 // ===== DELETE =====
 
-async function deleteHost(id: number) {
-  await api.requestDelete(`/support/delete-host?id=${id}`);
+async function deleteDriver(id: number) {
+  await api.requestDelete(`/support/delete-driver?id=${id}`);
 
   reloadTable();
 }

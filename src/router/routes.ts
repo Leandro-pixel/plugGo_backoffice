@@ -1,7 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
-
   // LOGIN
   {
     path: '/',
@@ -38,6 +37,11 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'hosts',
         component: () => import('pages/host/HostPage.vue'),
+      },
+
+      {
+        path: 'drivers',
+        component: () => import('pages/driver/DriverPage.vue'),
       },
 
       {

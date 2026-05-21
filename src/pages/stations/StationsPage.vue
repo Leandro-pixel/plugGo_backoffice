@@ -245,7 +245,7 @@ const createFormReview = ref({ spotId: 0, driverId: 0,   rating: 0 as number, co
 onMounted(loadSpots);
 
 async function loadSpots() {
-  const response = await api.requestGet('/host/list-all-spots');
+  const response = await api.requestGet('/support/list-spots');
   const data = Array.isArray(response) ? response : response.data;
 
   // 🔥 calcula média no front (caso backend não mande)

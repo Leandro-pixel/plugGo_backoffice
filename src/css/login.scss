@@ -7,7 +7,7 @@
   }
 }
 
-.blur{
+.blur {
   filter: blur();
 }
 
@@ -17,8 +17,7 @@
   right: 0;
 }
 
-
-.custom_center{
+.custom_center {
   @media screen and (max-width: 900px) {
     justify-content: center;
   }
@@ -40,14 +39,13 @@
   }
 }
 
-.image_background{
-  background-image: url('images/desfoque_login.png');
-  background-size: 'cover';
-  background-position: 'center';
-  backdrop-filter: blur(10px); /* Aplica o blur apenas no fundo */
+.image_background {
+  background-image: url('/images/desfoque_login.png');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-
 
 .custom_logo {
   display: flex;
@@ -79,7 +77,7 @@
   }
 }
 
-.custom_z{
+.custom_z {
   z-index: 10;
 }
 
@@ -95,7 +93,7 @@
   }
 }
 
-.login__logo{
+.login__logo {
   width: 200px;
   height: 200px;
 }
@@ -106,7 +104,7 @@
   justify-content: center;
 }
 
-.agro_text{
+.agro_text {
   color: white;
   font-size: 4rem;
   margin-bottom: 2rem;
@@ -141,10 +139,11 @@
 
 .custom-transparent-bg {
   position: relative;
-  background: rgba(248, 247, 247, 0.5); /* Aplica transparência no fundo (50% opaco) */
+  background: rgba(
+    248,
+    247,
+    247,
+    0.5
+  ); /* Aplica transparência no fundo (50% opaco) */
   /* Você pode ajustar a cor e a opacidade conforme necessário */
 }
-
-
-
-

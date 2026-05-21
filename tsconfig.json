@@ -3,12 +3,13 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "strict": false,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "src/*": ["src/*"]
     },
-    "types": [ "node"]
+    "types": ["node"]
   },
   "include": [
     "src/**/*.ts",
@@ -19,7 +20,6 @@
   ],
   //"exclude": ["node_modules"]
 
-
   "exclude": [
     "./dist",
     "./.quasar",
@@ -28,5 +28,4 @@
     "./src-cordova",
     "./quasar.config.*.temporary.compiled*"
   ]
-    
 }

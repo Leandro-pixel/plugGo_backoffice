@@ -44,38 +44,38 @@ const requestPost = async function (
   path: string,
   body?: any | null,
   params?: any | null,
-  headers?: any,
-  retried = 0
+  headers?: any
+  //retried = 0
 ): Promise<DataResponse['data']> {
   const token = localStorage.getItem('accessToken');
-  console.log('path:' + path);
-  console.log('body:' + JSON.stringify(body)); // Adicionando JSON.stringify para visualizar o conteúdo do body
-  console.log('params:' + JSON.stringify(params)); // Para verificar os parâmetros no console
-  console.log('token:' + token);
+
+  headers = {
+    ...headers,
+    Authorization: `Bearer ${token}`,
+  };
 
   try {
     const response = await axios.post(`${BASE_URL}${path}`, body, {
       headers,
       params,
     });
-    console.log(response.status + response.data)
     return response.data;
   } catch (error: any) {
+    const errorMessage = error.response?.data?.message || error.response?.data?.error;
     if (error.response && error.response.status === 401) {
-      const result = await refreshToken();
-      if (result.success && retried < MAX_RETRIES) {
-        return requestPost(path, body, params, headers, retried + 1); // Passando todos os parâmetros corretamente
-      } else {
-        throw new UnauthorizedError();
-      }
+      // handle 401
     } else if (error.response && error.response.status === 400) {
-      throw new BadRequestError();
+      throw new BadRequestError(errorMessage || 'Requisição inválida');
     } else if (error.response && error.response.status === 404) {
       throw new NotFoundError();
     } else if (error.response && error.response.status === 406) {
-      throw new NotAcceptableError();
+      throw new NotAcceptableError(errorMessage || 'Não aceitável');
+    } else if (error.response && error.response.status === 422) {
+      throw new BadRequestError(errorMessage || 'Dados inválidos');
+    } else if (error.response && error.response.status === 500) {
+      throw new InternalError(errorMessage || 'Ocorreu um erro inesperado.');
     }
-    throw new InternalError();
+    throw new InternalError(errorMessage || 'Ocorreu um erro inesperado.');
   }
 };
 
@@ -233,7 +233,7 @@ const requestGetCEP = async function (
     if (error.response && error.response.status === 401) {
       const result = await refreshToken();
       if (result.success && retried < MAX_RETRIES) {
-        return requestGet(path, params, headers, retried + 1);
+        return requestGet(path, params, headers);
       } else {
         throw new UnauthorizedError();
       }
@@ -253,7 +253,6 @@ const requestGet = async function (
   path: string,
   params?: any,
   headers?: any,
-  retried = 0
 ): Promise<DataResponse['data']> {
   const token = localStorage.getItem('accessToken');
   headers = {
@@ -275,12 +274,6 @@ const requestGet = async function (
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 401) {
-      const result = await refreshToken();
-      if (result.success && retried < MAX_RETRIES) {
-        return requestGet(path, params, headers, retried + 1);
-      } else {
-        throw new UnauthorizedError();
-      }
     } else if (error.response && error.response.status === 400) {
       throw new BadRequestError();
     } else if (error.response && error.response.status === 404) {
@@ -318,7 +311,7 @@ const requestGetWithApiKey = async function (
     if (error.response && error.response.status === 401) {
       const result = await refreshToken();
       if (result.success && retried < MAX_RETRIES) {
-        return requestGet(path, params, headers, retried + 1);
+        return requestGet(path, params, headers);
       } else {
         throw new UnauthorizedError();
       }
